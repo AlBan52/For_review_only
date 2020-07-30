@@ -1,9 +1,11 @@
 import smtplib
+import os
+from dotenv import load_dotenv
 
-my_mail = 'From: alban.nn@yandex.ru'
-friend_mail = 'To: alban.nn@yandex.ru'
-subject_mail = 'Subject: Приглашение'
-mail_text = '''\n Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
+my_mail = 'From: alex.balakin52@gmail.com \n'
+friend_mail = 'To: alex.balakin52@gmail.com \n'
+subject_mail = 'Subject: Приглашение_3 \n'
+mail_text = '''\n\n Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
 
 %website% — это новая версия онлайн-курса по программированию. 
 Изучаем Python и не только. Решаем задачи. Получаем ревью от преподавателя. 
@@ -30,14 +32,12 @@ mail_text = mail_text.replace('%friend_name%', friend_name)
 mail_text = mail_text.replace('%my_name%', my_name)
 mail_to_send = my_mail + friend_mail + subject_mail + mail_text
 
-# print(mail_to_send)
 mail_to_send = mail_to_send.encode("UTF-8")
-# print(mail_to_send)
-log_in = 'alban.nn@yandex.ru'
-password = 'PUPpets@431'
-email_from = 'alban.nn@yandex.ru'
-email_to = 'alban.nn@yandex.ru'
-server = smtplib.SMTP_SSL('smtp.yandex.ru:465')
+log_in = load_dotenv("LOGIN")
+password = load_dotenv("PASSWORD")
+email_from = 'alex.balakin52@gmail.com'
+email_to = 'alex.balakin52@gmail.com'
+server = smtplib.SMTP_SSL('smtp.gmail.com:465')
 server.login(log_in, password)
 server.sendmail(email_from, email_to, mail_to_send)
 server.quit()
