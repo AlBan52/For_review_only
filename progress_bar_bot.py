@@ -11,10 +11,12 @@ bot.send_message(chat_id, "Бот запущен")
 
 
 def bot_reply(user_message):
-    print('Привет! Ты написал мне:', user_message)
+    bot_message_to_chat = 'Привет! Ты написал мне: ' + user_message
+    bot.send_message(chat_id, bot_message_to_chat)
+#    print('Привет! Ты написал мне:', user_message)
 
 
-bot_message_to_chat = bot.reply_on_message(bot_reply)
-bot.send_message(chat_id, bot_message_to_chat)
+#bot_message_to_chat = bot.reply_on_message(bot_reply)
+
 
 bot.run_bot()
